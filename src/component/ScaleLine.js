@@ -4,6 +4,9 @@
  */
 Ext.define('GXC.component.ScaleLine', {
     extend: 'Ext.Component',
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
     alias: 'widget.gxc_component_scaleline',
 
     inject: [

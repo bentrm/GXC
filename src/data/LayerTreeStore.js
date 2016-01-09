@@ -7,6 +7,10 @@ Ext.define('GXC.data.LayerTreeStore', {
         'GeoExt.tree.LayerLoader',
         'GeoExt.tree.LayerContainer'
     ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
+
 
     inject: [
         'layerStore'

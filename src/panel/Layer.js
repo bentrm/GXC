@@ -10,12 +10,20 @@ Ext.define('GXC.panel.Layer', {
         'Ext.util.Point',
         'GXC.panel.LayerViewController'
     ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
     inject: [
         'layerTreeStore'
     ],
 
-    controller: 'GXC.panel.LayerViewController',
+    controller: 'layer',
+
+    listener: {
+        itemcontextmenu: 'onShowLayerContextMenu',
+        scope: 'controller'
+    },
 
     alias: 'widget.gxc_panel_layer',
 

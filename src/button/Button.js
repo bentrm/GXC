@@ -8,6 +8,9 @@
  */
 Ext.define('GXC.button.Button', {
     extend: 'Ext.button.Button',
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
     alias: 'widget.gxc_button',
 

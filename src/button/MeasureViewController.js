@@ -4,6 +4,11 @@
  */
 Ext.define('GXC.button.MeasureViewController', {
     extend: 'Deft.mvc.ViewController',
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
+
+    alias: 'controller.measure',
 
     /**
      * Class is injected with
@@ -14,12 +19,6 @@ Ext.define('GXC.button.MeasureViewController', {
     inject: [
         'notificationService'
     ],
-
-    control: {
-        view: {
-            toggle: 'onToggle'
-        }
-    },
 
     /**
      * The window popup the measurement is shown in.

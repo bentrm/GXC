@@ -19,7 +19,6 @@
 Ext.define('GXC.App', {
     extend: 'Deft.mvc.Application',
     requires: [
-        'Deft.mixin.Controllable',
         'Deft.mixin.Injectable',
         'Ext.app.Application',
         'Ext.tip.QuickTipManager',
@@ -42,8 +41,20 @@ Ext.define('GXC.App', {
      */
     init: function() {
         this.beforeInit();
-        Deft.Injector.configure(this.buildInjectorConfiguration());
+        this.loadConfig();
+        this.buildInjectorConfiguration();
         return this.afterInit();
+    },
+
+    loadConfig: function() {
+        Deft.Injector.configure({
+            appConfig: {
+                className: 'GXC.config.AppConfig',
+                parameters: [{
+                    environment: window.GXC_ENV
+                }]
+            }
+        });
     },
 
     /**
@@ -52,17 +63,16 @@ Ext.define('GXC.App', {
      * @return {Object} A keyed object of services providers.
      */
     buildInjectorConfiguration: function() {
-        return {
-            appConfig: {
-                className: 'GXC.config.AppConfig',
-                parameters: [{
-                    environment: window.GXC_ENV
-                }]
-            },
+        Deft.Injector.configure({
             appContext: 'GXC.context.AppContext',
             layerService: 'GXC.service.Layer',
             layerStore: 'GXC.data.LayerStore',
-            layerSourceStore: 'GXC.data.LayerSourceStore',
+            layerSourceStore: {
+                className: 'GXC.data.LayerSourceStore',
+                parameters: {
+                    data: this.getSourcesConfig()
+                }
+            },
             layerTreeStore: 'GXC.data.LayerTreeStore',
             serviceStore: 'GXC.data.ServiceStore',
             mapService: 'GXC.service.Map',
@@ -75,7 +85,7 @@ Ext.define('GXC.App', {
             },
             owsCapabilitiesService: 'GXC.service.OwsCapabilities',
             sourceService: 'GXC.service.Source'
-        };
+        });
     },
 
     /**
@@ -84,15 +94,16 @@ Ext.define('GXC.App', {
      */
     beforeInit: function() {
         // Init state provider
-        if (Ext.supports.LocalStorage) {
-            Ext.state.Manager.setProvider(
-                Ext.create('Ext.state.LocalStorageProvider')
-            );
-        } else {
-            Ext.state.Manager.setProvider(
-                Ext.create('Ext.state.CookieProvider')
-            );
-        }
+        // TODO: Find better solution than local storage
+        //if (Ext.supports.LocalStorage) {
+        //    Ext.state.Manager.setProvider(
+        //        Ext.create('Ext.state.LocalStorageProvider')
+        //    );
+        //} else {
+        //    Ext.state.Manager.setProvider(
+        //        Ext.create('Ext.state.CookieProvider')
+        //    );
+        //}
         // Do not send HTTP OPTIONS request if not necessary
         Ext.Ajax.useDefaultXhrHeader = false;
     },
@@ -106,6 +117,12 @@ Ext.define('GXC.App', {
 
         Ext.tip.QuickTipManager.init();
         Ext.create('GXC.Viewport');
+    },
+
+    getSourcesConfig: function() {
+        var layers = Deft.Injector.resolve('appConfig').get('layers', []);
+        console.log(layers);
+        return layers;
     },
 
     /**

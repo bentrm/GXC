@@ -2,6 +2,9 @@
  * A central notification service to brodcast errors and messages via dialogs.
  */
 Ext.define('GXC.service.Notification', {
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
     inject: [
         'appContext'

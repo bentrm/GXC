@@ -9,10 +9,7 @@ Ext.Loader.setConfig({
     enabled: true,
     disableCaching: true
 });
-Ext.syncRequire([
-    'Deft.mixin.Injectable',
-    'Deft.mixin.Controllable'
-]);
+
 // Show long stack traces when in debug
 Q.longStackSupport = true;
 //</debug>

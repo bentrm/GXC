@@ -1,6 +1,6 @@
 var GXC_ENV = {
   proxy: {
-    host: 'http://localhost:8081/proxy/whitelist.jsp?'
+    host: ''
   },
   geoserver: {
     host: 'http://localhost:8081/geoserver'
@@ -38,7 +38,7 @@ var GXC_ENV = {
     'EPSG:900913': true
   },
   mapOptions: {
-    projection: 'EPSG:4326',
+    projection: 'EPSG:900913',
     center: [13.75, 51.05],
     minScale: 10,
     maxScale: 150000000,

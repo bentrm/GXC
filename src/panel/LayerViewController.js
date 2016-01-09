@@ -6,16 +6,15 @@ Ext.define('GXC.panel.LayerViewController', {
     requires: [
         'GXC.menu.Layer'
     ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
+
+    alias: 'controller.layer',
 
     inject: [
         'layerService'
     ],
-
-    control: {
-        view: {
-            itemcontextmenu: 'onShowLayerContextMenu'
-        }
-    },
 
     /**
      * Opens a context menu allowing further interaction with the selected layer.

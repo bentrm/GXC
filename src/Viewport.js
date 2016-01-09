@@ -19,6 +19,9 @@ Ext.define('GXC.Viewport', {
         'GXC.toolbar.*',
         'GXC.panel.*'
     ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
     alias: 'widget.gxc_viewport',
 

@@ -7,5 +7,9 @@
 
     "resources": [],
 
+    "compatibility": {
+        "ext": "4.2"
+    },
+
     "id": "1ad0bebf-39de-49a3-ae76-3d02c13f9fbb"
 }

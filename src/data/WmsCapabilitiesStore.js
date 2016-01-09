@@ -17,7 +17,7 @@ Ext.define('GXC.data.WmsCapabilitiesStore', {
             layer;
 
         if (idx > -1) {
-            layer = this.getAt(idx).getLayer().clone();
+            layer = this.getAt(idx).getData().clone();
         }
 
         return layer;

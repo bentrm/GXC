@@ -1,6 +1,6 @@
 var GXC_ENV = {
   proxy: {
-    host: 'http://localhost:8081/proxy/whitelist.jsp?'
+    host: ''
   },
   geoserver: {
     host: 'http://localhost:8081/geoserver'
@@ -72,15 +72,17 @@ var GXC_ENV = {
     collapsible: true,
     collapsed: true,
     split: 3
-  }, {
-    region: 'east',
-    title: 'Layer',
-    xtype: 'gxc_panel_layer',
-    autoScroll: true,
-    collapsible: true,
-    width: 250,
-    split: 3
-  }, {
+  },
+  //  {
+  //  region: 'east',
+  //  title: 'Layer',
+  //  xtype: 'gxc_panel_layer',
+  //  autoScroll: true,
+  //  collapsible: true,
+  //  width: 250,
+  //  split: 3
+  //},
+    {
     region: 'south',
     xtype: 'gxc_toolbar_notificationbar',
     itemId: 'notificationBar'

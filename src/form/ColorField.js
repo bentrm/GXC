@@ -6,7 +6,6 @@ Ext.define('GXC.form.ColorField', {
     alias: 'widget.gxc_form_colorfield',
     requires: [
         'Ext.form.field.VTypes',
-        'Ext.layout.component.field.Text',
         'Ext.menu.ColorPicker'
     ],
 

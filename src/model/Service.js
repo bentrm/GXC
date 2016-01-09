@@ -5,11 +5,6 @@
  */
 Ext.define('GXC.model.Service', {
     extend: 'Ext.data.Model',
-    requires: [
-        'Ext.data.SequentialIdGenerator'
-    ],
-
-    idgen: 'sequential',
 
     fields: [{
         name: 'type',

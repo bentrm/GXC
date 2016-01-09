@@ -5,9 +5,12 @@
 Ext.define('GXC.panel.Map', {
     extend: 'GeoExt.panel.Map',
     requires: [
-        'GXC.panel.MapViewController',
+        'GXC.panel.MapController',
         'GeoExt.slider.Zoom',
         'GeoExt.slider.Tip'
+    ],
+    mixins: [
+        'Deft.mixin.Injectable'
     ],
 
     alias: 'widget.gxc_panel_map',
@@ -16,11 +19,17 @@ Ext.define('GXC.panel.Map', {
         'mapService'
     ],
 
-    controller: 'GXC.panel.MapViewController',
+    controller: 'map',
+
+    listeners: {
+        boxready: 'onBoxready',
+        scope: 'controller'
+    },
 
     cls: 'gxc-panel-map',
 
-    stateful: true,
+    // TODO: find Changes in Ext5
+    //stateful: true,
     stateId: 'gxcMap',
 
     initComponent: function() {

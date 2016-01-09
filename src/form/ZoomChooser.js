@@ -6,6 +6,9 @@ Ext.define('GXC.form.ZoomChooser', {
     requires: [
         'GeoExt.data.ScaleStore'
     ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
     alias: 'widget.gxc_form_zoomchooser',
 
@@ -28,9 +31,9 @@ Ext.define('GXC.form.ZoomChooser', {
     selectOnFocus: true,
 
     listeners: {
-        'change': 'onChange',
-        'select': 'onSelect',
-        'specialkey': 'onSpecialKey'
+        select: 'onSelect',
+        specialkey: 'onSpecialKey',
+        scope: 'this'
     },
 
     initComponent: function() {
@@ -45,7 +48,7 @@ Ext.define('GXC.form.ZoomChooser', {
         });
 
         map.events.on({
-            'zoomend': this.onZoomend,
+            zoomend: this.onZoomend,
             scope: this
         });
 
@@ -53,7 +56,7 @@ Ext.define('GXC.form.ZoomChooser', {
     },
 
     onSelect: function(combo, record, index) {
-        this.map.zoomTo(record[0].get('level'));
+        this.map.zoomTo(record.get('level'));
     },
 
     onSpecialKey: function(combo, e) {
@@ -78,7 +81,7 @@ Ext.define('GXC.form.ZoomChooser', {
 
     destroy: function() {
         this.map.un({
-            'zoomend': this.onZoomend,
+            zoomend: this.onZoomend,
             scope: this
         });
 

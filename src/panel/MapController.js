@@ -1,8 +1,13 @@
 /**
  * A View Controller to the GXC.panel.Map.
  */
-Ext.define('GXC.panel.MapViewController', {
+Ext.define('GXC.panel.MapController', {
     extend: 'Deft.mvc.ViewController',
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
+
+    alias: 'controller.map',
 
     inject: [
         'appConfig',
@@ -17,16 +22,10 @@ Ext.define('GXC.panel.MapViewController', {
         }
     },
 
-    control: {
-        'view': {
-            boxready: 'onViewBoxready'
-        }
-    },
-
     /**
      * Called when the panels box model is ready loading initial data.
      */
-    onViewBoxready: function(view, width, height) {
+    onBoxready: function(view, width, height) {
         this.appContext.mapIsReady(view, width, height);
         this.loadInitialData();
     },
@@ -46,6 +45,7 @@ Ext.define('GXC.panel.MapViewController', {
             .then(function() {
                 me.appContext.initialDataLoaded();
             }).fail(function(error) {
+                console.log(error);
                 me.notificationService.error('Error', error);
             }).fin(function() {
                 view.setLoading(false);
@@ -59,4 +59,5 @@ Ext.define('GXC.panel.MapViewController', {
         var map = this.getView().map;
         map.zoomToExtent(extent);
     }
+
 });

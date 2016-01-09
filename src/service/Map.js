@@ -5,6 +5,9 @@ Ext.define('GXC.service.Map', {
     requires: [
         'GXC.Version'
     ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
     inject: [
         'appConfig',
@@ -62,7 +65,9 @@ Ext.define('GXC.service.Map', {
         mapOptions.center = center.transform('EPSG:4326', mapOptions.projection);
 
         this.setMap(new OpenLayers.Map(mapOptions));
-        this.addMousePositionControl();
+
+        // TODO: Add control if it is configured by user
+        //this.addMousePositionControl();
 
         // bind the injected layer store to the map effectivly syncing layers.
         this.layerStore.bindMap(this.getMap());

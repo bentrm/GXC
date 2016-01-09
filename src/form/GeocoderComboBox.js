@@ -3,6 +3,9 @@
  */
 Ext.define('GXC.form.GeocoderComboBox', {
     extend: 'GeoExt.form.field.GeocoderComboBox',
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
     inject: [
         'mapService'

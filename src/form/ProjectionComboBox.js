@@ -1,5 +1,8 @@
 Ext.define('GXC.form.ProjectionComboBox', {
     extend: 'Ext.form.field.ComboBox',
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
     inject: [
         'appConfig',

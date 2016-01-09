@@ -1,4 +1,13 @@
 {
+    /**
+     * The namespace of this package.
+     *
+     * As a general rule, all classes that belong to this package should be under this namespace
+     * if multiple namespaces are part of this package, set this to "".
+     */
+    "namespace": "GXC",
+
+
     "name": "GXC",
     "type": "code",
     "creator": "HTW Dresden",
@@ -18,7 +27,6 @@
     "output": "${package.dir}/build",
     "local": true,
     "requires": [
-        "deft",
         "GeoExt"
     ],
     "scripts": {

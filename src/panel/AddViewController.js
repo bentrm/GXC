@@ -7,37 +7,17 @@ Ext.define('GXC.panel.AddViewController', {
         'GXC.panel.WfsCapabilities',
         'GXC.panel.WmsCapabilities'
     ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
+
+    alias: 'controller.add',
 
     inject: [
         'appContext',
         'notificationService',
         'serviceStore'
     ],
-
-    control: {
-        'view': {
-            'boxready': 'onViewBoxready'
-        },
-        'serviceTypeComboBox': {
-            'change': 'onServiceTypeComboBoxSelect'
-        },
-        'serviceComboBox': {
-            'change': 'onServiceComboBoxSelect'
-        },
-        'previewMap': true,
-        'capabilitiesGrid': {
-            live: true,
-            listeners: {
-                'capabilitiesloaderror': 'onCapabilitiesLoadError',
-                'itemclick': 'onCapabilitiesGridItemClick'
-            }
-        },
-        'addServiceFieldset': true,
-        'serviceForm': true,
-        'saveService': {
-            'click': 'onSaveServiceClick'
-        }
-    },
 
     /**
      * Called when the box model of the component is ready.

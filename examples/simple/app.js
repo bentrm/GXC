@@ -10,8 +10,7 @@ Ext.Loader.setConfig({
     disableCaching: true
 });
 Ext.syncRequire([
-    'Deft.mixin.Injectable',
-    'Deft.mixin.Controllable'
+    'Deft.mixin.Injectable'
 ]);
 
 Q.longStackSupport = true;

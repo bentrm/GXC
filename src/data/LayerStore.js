@@ -15,18 +15,18 @@ Ext.define('GXC.data.LayerStore', {
          *
          * @inheritDoc
          */
-        add: function(store, records, index) {
-            Ext.state.Manager.set('gxc-sources', this.convertToSources());
-        },
-
-        /**
-         * Persists layer state to Local Storage.
-         *
-         * @inheritDoc
-         */
-        remove: function(store, record, index) {
-            Ext.state.Manager.set('gxc-sources', this.convertToSources());
-        }
+        //add: function(store, records, index) {
+        //    Ext.state.Manager.set('gxc-sources', this.convertToSources());
+        //},
+        //
+        ///**
+        // * Persists layer state to Local Storage.
+        // *
+        // * @inheritDoc
+        // */
+        //remove: function(store, record, index) {
+        //    Ext.state.Manager.set('gxc-sources', this.convertToSources());
+        //}
     },
 
     /**

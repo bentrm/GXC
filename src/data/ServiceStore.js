@@ -4,6 +4,10 @@
  */
 Ext.define('GXC.data.ServiceStore', {
     extend: 'Ext.data.Store',
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
+
 
     inject: [
         'appConfig'

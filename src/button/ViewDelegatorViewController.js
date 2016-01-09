@@ -10,17 +10,7 @@ Ext.define('GXC.button.ViewDelegatorViewController', {
         'Ext.window.Window'
     ],
 
-    control: {
-        /**
-         * It's user configurable if the DelegateView button is responding to click of toggle events.
-         * Therefore we listen for both here.
-         */
-        view: {
-            boxready: 'onViewBoxready',
-            click: 'onViewClick',
-            toggle: 'onViewToggle'
-        }
-    },
+    alias: 'controller.viewDelegator',
 
     /**
      * The view this controller is adding to the viewport.

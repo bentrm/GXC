@@ -11,6 +11,9 @@ Ext.define('GXC.service.Layer', {
         'GXC.data.WmsCapabilitiesStore',
         'GXC.panel.Edit'
     ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
     inject: [
         'appConfig',

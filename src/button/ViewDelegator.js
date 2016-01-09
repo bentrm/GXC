@@ -24,9 +24,21 @@ Ext.define('GXC.button.ViewDelegator', {
         'GXC.button.ViewDelegatorViewController'
     ],
 
-    controller: 'GXC.button.ViewDelegatorViewController',
-
     alias: 'widget.gxc_button_viewdelegator',
+
+    controller: 'viewDelegator',
+
+    /**
+     * It's user configurable if the DelegateView button is responding to click of toggle events.
+     * Therefore we listen for both here.
+     */
+    listeners: {
+        boxready: 'onViewBoxready',
+        click: 'onViewClick',
+        toggle: 'onViewToggle',
+        scope: 'controller'
+    },
+
 
     /**
      * Delegate configuration.

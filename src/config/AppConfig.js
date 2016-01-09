@@ -32,7 +32,7 @@ Ext.define('GXC.config.AppConfig', {
         this.setEnvironment(config.environment);
 
         this.parseUrlParams();
-        this.initState();
+        //this.initState();
 
         // set up the proxy host for non-same origin requests
         OpenLayers.ProxyHost = this.getProxyHost();

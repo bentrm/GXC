@@ -11,5 +11,9 @@ Ext.define('GXC.model.Layer', {
         type: 'boolean',
         mapping: 'metadata.displayInOverview',
         defaultValue: false
-    }]
+    }],
+
+    getLayer: function() {
+        return this.data;
+    }
 });

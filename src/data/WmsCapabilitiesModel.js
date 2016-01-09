@@ -169,8 +169,6 @@ Ext.define('GXC.data.WmsCapabilitiesModel', {
             metadata: metadata
         };
 
-        console.log(this.get('minScale'));
-
         if (this.get('minScale')) {
             layerOptions.minScale = this.get('minScale');
         }

@@ -9,11 +9,16 @@ Ext.define('GXC.button.Measure', {
 
     alias: 'widget.gxc_button_measure',
 
-    controller: 'GXC.button.MeasureViewController',
+    controller: 'measure',
 
     inject: [
         'mapService'
     ],
+
+    listener: {
+        toggle: 'onToggle',
+        scope: 'controller'
+    },
 
     enableToggle: true,
 

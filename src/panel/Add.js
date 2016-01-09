@@ -14,14 +14,43 @@ Ext.define('GXC.panel.Add', {
         'GXC.data.OwsTypeStore',
         'GXC.panel.AddViewController'
     ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
     inject: [
         'serviceStore'
     ],
 
-    controller: 'GXC.panel.AddViewController',
+    controller: 'add',
 
     alias: 'widget.gxc_panel_add',
+
+    listeners: {
+        boxready: 'onViewBoxready',
+        scope: 'controller'
+    },
+
+    // TODO: REFS herstellen: https://www.sencha.com/blog/using-viewcontrollers-in-ext-js-5
+    //'serviceTypeComboBox': {
+    //    'change': 'onServiceTypeComboBoxSelect'
+    //},
+    //'serviceComboBox': {
+    //    'change': 'onServiceComboBoxSelect'
+    //},
+    //'previewMap': true,
+    //'capabilitiesGrid': {
+    //    live: true,
+    //    listeners: {
+    //        'capabilitiesloaderror': 'onCapabilitiesLoadError',
+    //        'itemclick': 'onCapabilitiesGridItemClick'
+    //    }
+    //},
+    //'addServiceFieldset': true,
+    //'serviceForm': true,
+    //'saveService': {
+    //    'click': 'onSaveServiceClick'
+    //}
 
     layout: {
         type: 'vbox',
