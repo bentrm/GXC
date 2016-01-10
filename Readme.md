@@ -1,5 +1,9 @@
 # Welcome to GXC
 
+_ _ _
+
+[![Build Status](https://travis-ci.org/bentrm/GXC.svg?branch=ext5)](https://travis-ci.org/bentrm/GXC)
+
 GXC aims to allow easy and declarativ definition of mapping applications.
 It builds on the following Open Source components
 
