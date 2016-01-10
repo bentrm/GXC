@@ -2,5 +2,5 @@ node_modules/
 build/
 docs/
 
-examples/*/sass/example/bootstrap.js
+examples/*/sass/example
 examples/*/bootstrap.*
