@@ -1,38 +1,34 @@
 {
-    "namespace": "GXC",
-    "name": "GXC",
-    "type": "code",
-    "creator": "HTW Dresden",
-    "summary": "GeoExt 2 Client components",
-    "detailedDescription": "An ExtJS package providing client components based on the GeoExt 2 library to rapidly build GIS applications.",
-    "version": "1.0.0",
-    "compatVersion": "1.0.0",
-    "format": "1",
-    "slicer": {
-        "js": [
-            {
-                "path": "${package.dir}/sass/example/custom.js",
-                "isWidgetManifest": true
-            }
-        ]
-    },
-    "output": "${package.dir}/build",
-    "local": true,
-    "requires": [
-        "GeoExt"
-    ],
-    "scripts": {
-    },
-    "dependencies": {
-    },
-    "devDependencies": {
-        "GeoExt": "bentrm/geoext2.git#sass",
-        "DeftJS": "bentrm/DeftJS#merge",
-        "mocha": "*",
-        "chai": "*",
-        "chai-as-promised": "*",
-        "sinon": "*",
-        "sinon-chai": "*",
-        "mocha-phantomjs": "*"
-    }
+  "namespace": "GXC",
+  "name": "GXC",
+  "type": "code",
+  "creator": "HTW Dresden",
+  "summary": "GeoExt 2 Client components",
+  "detailedDescription": "An ExtJS package providing client components based on the GeoExt 2 library to rapidly build GIS applications.",
+  "version": "1.0.0",
+  "compatVersion": "1.0.0",
+  "format": "1",
+  "slicer": {
+    "js": [
+      {
+        "path": "${package.dir}/sass/example/custom.js",
+        "isWidgetManifest": true
+      }
+    ]
+  },
+  "output": "${package.dir}/build",
+  "local": true,
+  "requires": [
+    "GeoExt"
+  ],
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "phantomjs": "^1.9.19"
+  }
 }

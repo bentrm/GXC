@@ -8,25 +8,16 @@
  */
 Ext.define('GXC.button.Button', {
     extend: 'Ext.button.Button',
-    mixins: [
-        'Deft.mixin.Injectable'
+    requires: [
+      "GXC.button.ButtonController"
     ],
 
     alias: 'widget.gxc_button',
+    controller: "button",
 
     listeners: {
-        toggle: function(btn, pressed) {
-            if (pressed && btn.untoggleByEsc) {
-                this.keymap = new Ext.util.KeyMap(Ext.getBody(), [{
-                    key: Ext.EventObject.ESC,
-                    defaultEventAction: 'preventDefault',
-                    scope: this,
-                    fn: this.onEscKey
-                }]);
-            } else {
-                this.destroyKeymap();
-            }
-        }
+        toggle: "onToggle",
+        scope: "controller"
     },
 
     /**
@@ -40,25 +31,7 @@ Ext.define('GXC.button.Button', {
      * not provided seperatly.
      */
     initComponent: function() {
-        var overflowText = this.overflowText || this.text || this.tooltip;
-        this.overflowText = overflowText;
-
-        this.callParent(arguments);
-    },
-
-    onEscKey: function() {
-        this.toggle(false);
-    },
-
-    destroyKeymap: function() {
-        if (this.keymap) {
-            this.keymap.destroy();
-            this.keymap = null;
-        }
-    },
-
-    destroy: function() {
-        this.destroyKeymap();
+        this.overflowText = this.overflowText || this.text || this.tooltip;
         this.callParent(arguments);
     }
 });
