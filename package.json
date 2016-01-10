@@ -21,7 +21,9 @@
   "requires": [
     "GeoExt"
   ],
-  "scripts": {},
+  "scripts": {
+    "test": "./node_modules/.bin/karma start test/karma.conf.js --single-run --browsers PhantomJS"
+  },
   "dependencies": {},
   "devDependencies": {
     "jasmine-core": "^2.4.1",

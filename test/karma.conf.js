@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '../../../',
+    basePath: '../',
 
 
     // frameworks to use
@@ -16,18 +16,18 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.debug.js',
-      'ext/build/ext-all-debug.js',
-      'packages/GXC/lib/deft-debug.js',
-      'packages/GXC/test/loader.js',
-      'packages/GXC/test/helper.js',
+      'https://cdn.sencha.com/ext/gpl/5.1.0/build/ext-all-debug.js',
+      'lib/deft-debug.js',
+      'test/loader.js',
+      'test/helper.js',
       {
-        pattern: 'packages/GXC/src/**/*.js',
+        pattern: 'src/**/*.js',
         watched: true,
         included: false,
         served: true,
         nocache: true
       },
-      'packages/GXC/test/specs/**/*Spec.js'
+      'test/specs/**/*Spec.js'
     ],
 
 
