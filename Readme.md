@@ -3,6 +3,7 @@
 _ _ _
 
 [![Build Status](https://travis-ci.org/bentrm/GXC.svg?branch=ext5)](https://travis-ci.org/bentrm/GXC)
+[![Coverage Status](https://coveralls.io/repos/bentrm/GXC/badge.svg?branch=master&service=github)](https://coveralls.io/github/bentrm/GXC?branch=ext5)
 
 GXC aims to allow easy and declarativ definition of mapping applications.
 It builds on the following Open Source components
