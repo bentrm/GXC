@@ -1,6 +1,7 @@
-node_modules/
+coverage/
 build/
 docs/
+node_modules/
 
-examples/*/sass/example
 examples/*/bootstrap.*
+examples/*/sass/example

@@ -1,7 +1,7 @@
 # Welcome to GXC
 
-[![Build Status](https://travis-ci.org/bentrm/GXC.svg?branch=ext5)](https://travis-ci.org/bentrm/GXC)
-[![Coverage Status](https://coveralls.io/repos/bentrm/GXC/badge.svg?branch=master&service=github)](https://coveralls.io/github/bentrm/GXC?branch=ext5)
+[![Build Status](https://travis-ci.org/bentrm/GXC.svg?branch=master)](https://travis-ci.org/bentrm/GXC)
+[![Coverage Status](https://coveralls.io/repos/bentrm/GXC/badge.svg?branch=master&service=github)](https://coveralls.io/github/bentrm/GXC?branch=master)
 
 **Work in Progress**
 
