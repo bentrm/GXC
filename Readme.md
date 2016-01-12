@@ -1,26 +1,26 @@
 # Welcome to GXC
 
-_ _ _
-
 [![Build Status](https://travis-ci.org/bentrm/GXC.svg?branch=ext5)](https://travis-ci.org/bentrm/GXC)
 [![Coverage Status](https://coveralls.io/repos/bentrm/GXC/badge.svg?branch=master&service=github)](https://coveralls.io/github/bentrm/GXC?branch=ext5)
+
+**Work in Progress**
 
 GXC aims to allow easy and declarativ definition of mapping applications.
 It builds on the following Open Source components
 
-*   ExtJS 4.2.1
+*   ExtJS 5.1.0
 
     ExtJS is a JavaScrip framework for building web applications. It provides
     extensible widgets and components and a packaging and build mechanism that
     is used by GXC.
 
-*   GeoExt 2.0.3
+*   GeoExt 2.1.1
 
     GeoExt is a rich toolkit for web mapping applications adding ExtJS
     components for OpenLayers data structures. It is the junction between ExtJS
     and OpenLayers.
 
-*   DeftJS
+*   DeftJS5
 
     DeftJS adds an IoC Container to ExtJS that is the basis for the GXC.App
     class. It is a central point to register service providers and stores that
@@ -43,11 +43,8 @@ It builds on the following Open Source components
 
 The prepared test suite is based on
 
-* Mocha.js
-* Chai.js
-* chai-as-promised
-* sinon-chai
-* sinon
+* [Karma](http://karma-runner.github.io/0.13/index.html)
+* [Jasmine](http://jasmine.github.io)
 
 # Configuration
 
@@ -253,8 +250,9 @@ from.
 
 # TODO
 * Extend test suite
-* Run test suite via Travis CI
+* ~~Run test suite via Travis CI~~
 * Improve documentation
 * Add more examples
+* Create Website
 
 [xtype]: http://docs.sencha.com/extjs/4.2.1/#!/api/Ext.AbstractComponent-cfg-xtype
