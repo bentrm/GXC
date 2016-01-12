@@ -12,7 +12,6 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
-
     // list of files / patterns to load in the browser
     files: [
       'https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.debug.js',
@@ -20,13 +19,7 @@ module.exports = function(config) {
       'lib/deft-debug.js',
       'test/loader.js',
       'test/helper.js',
-      {
-        pattern: 'src/**/*.js',
-        watched: true,
-        included: false,
-        served: true,
-        nocache: true
-      },
+      'src/**/*.js',
       'test/specs/**/*Spec.js'
     ],
 
@@ -39,13 +32,20 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'src/**/*.js': ['coverage']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['dots'],
+    reporters: ['dots', 'coverage'],
+
+
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
 
 
     // web server port
