@@ -25,9 +25,10 @@ Ext.define('GXC.component.ScaleLine', {
     initControl: function() {
         var width = this.getWidth(),
             options = {
+                geodesic: true,
                 div: this.getEl().dom,
-                maxWidth: width,
-                bottomOutUnits: ''
+                maxWidth: width
+                // bottomOutUnits: ''
             };
 
         this.ctrl = new OpenLayers.Control.ScaleLine(options);
