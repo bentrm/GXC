@@ -51,7 +51,6 @@ Ext.define('GXC.service.Map', {
             controls: [
                 // attribution as defined per layer
                 new OpenLayers.Control.Attribution(),
-                new OpenLayers.Control.Navigation(),
                 // allow to open map via center params
                 new OpenLayers.Control.ArgParser()
             ]

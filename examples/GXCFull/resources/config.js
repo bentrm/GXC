@@ -1,6 +1,6 @@
 var GXC_ENV = {
   proxy: {
-    host: 'http://localhost:8081/proxy/whitelist.jsp?'
+    host: ''
   },
   geoserver: {
     host: 'http://localhost:8081/geoserver'
@@ -13,6 +13,8 @@ var GXC_ENV = {
     tbar: [{
         xtype: 'gxc_button_layer'
       }, '-', {
+        xtype: 'gxc_button_pan'
+      }, {
         xtype: 'gxc_button_zoomin'
       }, {
         xtype: 'gxc_button_zoomout'
@@ -120,59 +122,12 @@ var GXC_ENV = {
     zoom: 11
   },
   layers: [{
-    url: 'http://localhost:8081/geoserver/wms?',
+    url: 'http://ows.terrestris.de/osm/service?',
     type: 'WMS',
     version: '1.1.1',
-    layer: 'baalbek:geom_9709f641-5954-4f1e-8bc2-8f14cda8fced'
-  }, {
-    url: 'http://localhost:8081/geoserver/wms?',
-    type: 'WMS',
-    version: '1.1.1',
-    layer: 'baalbek:geom_931818c1-e60d-4500-ab44-b0f29afcc9fc'
-  }, {
-    url: 'http://localhost:8081/geoserver/wms?',
-    type: 'WMS',
-    version: '1.1.1',
-    layer: 'baalbek:geom_50d4cb6f-46f1-4422-954c-4c3ec371f063'
-  }, {
-    url: 'http://localhost:8081/geoserver/wms?',
-    type: 'WMS',
-    version: '1.1.1',
-    layer: 'baalbek:geom_5f4ff0f0-c325-4925-b565-0516e0cd1eda'
-  }, {
-    url: 'http://www.tu-cottbus.de/cisar/mapserver/topmaps?map=/home/html/cisar/umn/mapfiles27/ortho_all2.map?',
-    type: 'WMS',
-    version: '1.1.1',
-    layer: '2003'
-  }, {
-    url: 'http://www.tu-cottbus.de/cisar/mapserver/topmaps?map=/home/html/cisar/umn/mapfiles27/ortho_all2.map?',
-    type: 'WMS',
-    version: '1.1.1',
-    layer: '1996',
-    visibility: false
+    layer: 'OSM-WMS'
   }],
   services: [{
-    type: 'WMS',
-    title: 'Projekt Baalbek',
-    url: 'http://localhost:8081/geoserver/wms'
-  }, {
-      type: 'WMS',
-      title: 'Projekt Baalbek 3D',
-      url: 'http://141.56.141.17/geoserver/ddd/wms'
-  }, {
-    type: 'WMS',
-    title: 'CISAR UMN MapServer',
-    url: 'http://www.tu-cottbus.de/cisar/mapserver/topmaps?map=/home/html/cisar/umn/mapfiles27/ortho_all2.map'
-  }, {
-    type: 'WMS',
-    title: 'localhost (dev)',
-    url: 'http://localhost:8081/geoserver/wms'
-  }, {
-    type: 'WFS',
-    title: 'localhost (dev) WFS',
-    version: '1.3.0',
-    url: 'http://localhost:8081/geoserver/ows'
-  }, {
     type: 'WMS',
     title: 'OpenStreetMap',
     version: '1.1.1',
