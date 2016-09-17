@@ -65,12 +65,11 @@ var GXC_ENV = {
     }]
   }, {
     region: 'west',
-    width: 150,
+    width: 250,
     xtype: 'gxc_panel_legend',
     title: 'Legend',
     bodyPadding: '5px',
     collapsible: true,
-    collapsed: true,
     split: 3
   }, {
     region: 'east',
