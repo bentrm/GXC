@@ -15,6 +15,33 @@
             }
         ]
     },
+    "js": [
+        {
+            "path": "//cdnjs.cloudflare.com/ajax/libs/q.js/1.2.0/q.min.js",
+            "remote": true
+        },
+        {
+            "path": "//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js",
+            "remote": true
+        },
+        {
+            "path": "//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-combined.min.js",
+            "remote": true
+        },
+        {
+            "path": "//cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js",
+            "remote": true
+        },
+        {
+            "path": "${package.dir}/resources/script/DynamicMeasure.js"
+        }
+    ],
+    "css": [
+        {
+            "path": "//cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/theme/default/style.css",
+            "remote": true
+        }
+    ],
     "output": "${package.dir}/build",
     "local": true,
     "requires": [
