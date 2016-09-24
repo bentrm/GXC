@@ -2,14 +2,6 @@
  * Central application configuration provider.
  */
 Ext.define('GXC.config.AppConfig', {
-    statics: {
-        DEMO_ENV: {
-            endpoints: {},
-            defaults: {
-                suffix: '.json'
-            }
-        }
-    },
 
     config: {
         /**
@@ -78,15 +70,6 @@ Ext.define('GXC.config.AppConfig', {
     getContainer: function() {
         var domId = this.get('targetId');
         return Ext.get(domId);
-    },
-
-    /**
-     * Convenience function to get Viewport.
-     * @return {Ext.Component} The ExtJS viewport.
-     */
-    getViewport: function() {
-        var domId = this.get('targetId');
-        return Ext.get(domId) || Ext.get('viewport');
     },
 
     /**

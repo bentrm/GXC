@@ -43,19 +43,16 @@ Ext.define('GXC.Viewport', {
 
     layout: 'border',
 
+    cls: 'gxc-viewport',
+
     defaults: {
         border: 0,
         hideCollapseTool: true
     },
 
     initComponent: function() {
-        var container = this.appConfig.getContainer(),
-            viewport = Ext.DomHelper.append(container, {
-                tag: 'div', cls: 'gxc-viewport'
-            });
-
         Ext.apply(this, {
-            renderTo: viewport,
+            renderTo: this.appConfig.getContainer(),
             items: this.appConfig.get('viewportItems')
         });
 

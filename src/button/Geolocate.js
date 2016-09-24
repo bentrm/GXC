@@ -110,7 +110,7 @@ Ext.define('GXC.button.Geolocate', {
         this.map.setLayerIndex(this.layer, 99);
 
         // add css class to viewport to show status
-        this.appConfig.getViewport().addCls('wait');
+        this.appConfig.getContainer().addCls('wait');
 
         this.callParent(arguments);
     },
@@ -194,6 +194,6 @@ Ext.define('GXC.button.Geolocate', {
      * Removes waiting cursor class from viewport div.
      */
     clearCursorClass: function() {
-        this.appConfig.getViewport().removeCls('wait');
+        this.appConfig.getContainer().removeCls('wait');
     }
 });
