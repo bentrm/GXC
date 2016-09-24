@@ -1,7 +1,5 @@
 /**
  * Central application configuration provider.
- * This service reads the provided GXC_ENV variable and seeds the client
- * configuration from it.
  */
 Ext.define('GXC.config.AppConfig', {
     statics: {

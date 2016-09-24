@@ -36,11 +36,19 @@ Ext.define('GXC.App', {
         'GXC.Viewport'
     ],
 
+    appConfig: null,
+
     /**
      * Initialized the Application Object.
      * @return {undefined}
      */
     init: function() {
+        // test if configuration has been provided
+        if (!this.appConfig) {
+          console.error("No application configuration defined. Unable to launch application.");
+          return;
+        }
+
         this.beforeInit();
         Deft.Injector.configure(this.buildInjectorConfiguration());
         return this.afterInit();
@@ -56,7 +64,7 @@ Ext.define('GXC.App', {
             appConfig: {
                 className: 'GXC.config.AppConfig',
                 parameters: [{
-                    environment: window.GXC_ENV
+                    environment: this.appConfig
                 }]
             },
             appContext: 'GXC.context.AppContext',
