@@ -1,6 +1,7 @@
 /**
- * Button that triggers a Geolocation control that allows to find ones
- * own position on the map. Uses the Html5 Geolocation API.
+ * Allows to pan the map while active.
+ * This removes the default Navigation control from the map to make activation
+ * of panning explicit by using a tool in the taskbar.
  */
 Ext.define('GXC.button.Pan', {
     extend: 'GXC.button.OlButton',
@@ -58,6 +59,11 @@ Ext.define('GXC.button.Pan', {
             enableKinetic: true
         });
         this.map.addControl(this.control);
+
+        var nav = this.map.getControlsByClass('OpenLayers.Control.Navigation')[0];
+        nav.deactivate();
+        this.map.removeControl(nav);
+
         this.callParent(arguments);
     }
 });

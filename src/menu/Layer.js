@@ -5,6 +5,7 @@ Ext.define('GXC.menu.Layer', {
     extend: 'Ext.menu.Menu',
     requires: [
         'Ext.data.ArrayStore',
+        'GXC.button.FeatureInfo',
         'GXC.menu.LayerViewController',
         'GeoExt.slider.LayerOpacity'
     ],
@@ -39,6 +40,7 @@ Ext.define('GXC.menu.Layer', {
             rasterFormats = layer.metadata.formats,
             vecOps = layer.metadata.operationsMetadata,
             title = '',
+            tbar = [],
             items = [],
             gsSettings = this.appConfig.get('geoserver');
 
@@ -67,8 +69,9 @@ Ext.define('GXC.menu.Layer', {
             });
         }
 
-        if (layer.CLASS_NAME === 'OpenLayers.Layer.Vector' ||
-            layer.url.startsWith(gsSettings.host)) {
+        if (layer.CLASS_NAME === 'OpenLayers.Layer.Vector'
+            || (gsSettings && layer.url.startsWith(gsSettings.host))
+        ) {
             items.push({
                 text: this.txtAttributes,
                 iconCls: 'gxc-icon-edit',
@@ -123,6 +126,7 @@ Ext.define('GXC.menu.Layer', {
 
         Ext.apply(this, {
             title: title + layer.name,
+            tbar: tbar,
             items: items
         });
 

@@ -17,10 +17,14 @@ Ext.define('GXC.panel.Legend', {
 
     itemId: 'legend',
 
+    autoScroll: true,
+
     initComponent: function() {
         Ext.apply(this, {
             layerStore: this.layerStore
         });
+
+        console.log(this);
 
         this.callParent(arguments);
     }

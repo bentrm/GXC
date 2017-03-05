@@ -12,7 +12,8 @@ Ext.define('GXC.panel.Layer', {
     ],
 
     inject: [
-        'layerTreeStore'
+        'layerTreeStore',
+        'notificationService'
     ],
 
     controller: 'GXC.panel.LayerViewController',
@@ -30,6 +31,10 @@ Ext.define('GXC.panel.Layer', {
     enableColumnMove: false,
     sortableColumns: false,
     hideHeaders: true,
+
+
+    txtNoInfoTitle: 'WMS feature info',
+    txtNoInfo: 'No WMS feature info available at this position',
 
     viewConfig: {
         plugins: [{
@@ -75,20 +80,69 @@ Ext.define('GXC.panel.Layer', {
                 items: [{
                     iconCls: 'gxc-icon-info',
                     tooltip: 'Supports GetFeatureInfo',
-                    getClass: function(v, meta, rec) {
-                        var layer = rec.get('layer');
-
-                        if (layer && layer.metadata &&
-                            layer.metadata.queryable) {
-                            return 'gxc-icon-info';
-                        } else {
-                            return 'x-hide-display';
-                        }
-                    }
+                    isDisabled: function(grid, rowIndex, colIndex) {
+                      var treeModel = grid.getStore().getAt(rowIndex);
+                      var layer = treeModel.get('layer');
+                      return !layer || !layer.metadata || !layer.metadata.queryable;
+                    },
+                    handler: me.getFeatureInfo,
+                    scope: me
                 }]
             }];
         }
 
         this.callParent(arguments);
+    },
+
+    getFeatureInfo: function (grid, rowIndex, colIndex) {
+      var treeModel = grid.getStore().getAt(rowIndex);
+      var layer = treeModel.get('layer');
+      var map = layer.map;
+
+      this.control = new OpenLayers.Control.WMSGetFeatureInfo({
+          layers: [layer],
+          infoFormat: 'text/html',
+          eventListeners: {
+              getfeatureinfo: this.getFeatureInfoHandler,
+              scope: this
+          }
+      });
+
+      map.addControl(this.control);
+      map.div.style.cursor = 'help';
+      this.control.activate();
+    },
+
+    getFeatureInfoHandler: function(e) {
+        var map = e.object.map;
+
+        if (this._popup && this._popup.isVisible()) {
+            this._popup.close();
+        }
+
+        if (e.request.responseText === "") {
+            this.notificationService.error(this.txtNoInfoTitle, this.txtNoInfo);
+        } else {
+            this._popup = Ext.create('GeoExt.window.Popup', {
+                title: 'Feature Info',
+                width: 400,
+                height: 300,
+                layout: 'fit',
+                map: e.object.map,
+                location: e.xy,
+                autoScroll: true,
+                items: {
+                    xtype: 'gxc_component_iframe',
+                    src: e.request._object.responseURL,
+                    style: {
+                        background: 'white'
+                    }
+                }
+            }).show();
+        }
+
+        this.control.deactivate();
+        map.div.style.cursor = '';
+        map.removeControl(this.control);
     }
 });

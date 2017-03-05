@@ -7,7 +7,8 @@ Ext.define('GXC.button.FeatureInfo', {
     requires: [
         'Ext.grid.property.Grid',
         'Ext.layout.container.Accordion',
-        'GeoExt.window.Popup'
+        'GeoExt.window.Popup',
+        'GXC.component.IFrame'
     ],
 
     alias: 'widget.gxc_button_featureinfo',
@@ -21,6 +22,12 @@ Ext.define('GXC.button.FeatureInfo', {
         'mapService',
         'notificationService'
     ],
+
+    /**
+     * The layer info will be requested for.
+     * @type {[type]}
+     */
+    layer: null,
 
     /**
      * Allows the toggling of the underlying OL control.
@@ -56,14 +63,11 @@ Ext.define('GXC.button.FeatureInfo', {
 
         this.control = new OpenLayers.Control.WMSGetFeatureInfo({
             drillDown: true,
-            queryVisible: false,
-            infoFormat: 'application/vnd.ogc.gml',
-            vendorParams: {
-                'EXCEPTIONS': 'application/vnd.ogc.se_xml'
-            },
-            maxFeatures: 3,
+            queryVisible: true,
+            infoFormat: 'text/html',
             eventListeners: {
                 nogetfeatureinfo: this.noGetFeatureInfoHandler,
+                beforegetfeatureinfo: this.beforeGetFeatureInfoHandler,
                 getfeatureinfo: this.getFeatureInfoHandler,
                 scope: this
             }
@@ -74,41 +78,15 @@ Ext.define('GXC.button.FeatureInfo', {
 
 
     onEnable: function() {
-        var map = this.mapService.getMap(),
-            layers = map.layers,
-            query = [],
-            layer;
+        var map = this.mapService.getMap();
 
-        this._highlightLayer = new OpenLayers.Layer.Vector("_gxc_highlight", {
-            displayInLayerSwitcher: false,
-            isBaseLayer: false
-            }
-        );
-
-        map.addLayer(this._highlightLayer);
-
-        for (var i = 0; i < layers.length; i++) {
-            layer = layers[i];
-            if (layer.getVisibility() && layer.metadata.queryable) {
-                query.push(layers[i]);
-            }
-        }
-
-        this.control.layers = query;
         map.div.style.cursor = 'help';
-
         this.callParent(arguments);
     },
 
     onDisable: function() {
         var map = this.mapService.getMap();
-
         map.div.style.cursor = 'auto';
-
-        map.removeLayer(this._highlightLayer);
-        this._highlightLayer.destroy();
-        delete this._highlightLayer;
-
         this.callParent(arguments);
     },
 
@@ -116,57 +94,51 @@ Ext.define('GXC.button.FeatureInfo', {
         if (this._popup && this._popup.isVisible()) {
             this._popup.close();
         }
-
-        if (this._highlightLayer) {
-            this._highlightLayer.destroyFeatures();
-        }
-
         this.notificationService.error(this.txtNoInfoTitle, this.txtNoInfo);
     },
 
-    getFeatureInfoHandler: function(e) {
-        var featureItems = [],
-            features = e.features,
-            map = this.mapService.getMap(),
-            projection = map.getProjection(),
-            extent = map.getExtent();
+    beforeGetFeatureInfoHandler: function(e) {
+        var map = this.mapService.getMap(),
+            layers = map.layers,
+            query = [],
+            layer;
 
+        if (this.layer) {
+            query.push(this.layer);
+        } else {
+            for (var i = 0; i < layers.length; i++) {
+                layer = layers[i];
+                if (layer.getVisibility() && layer.metadata.queryable) {
+                    query.push(layers[i]);
+                }
+            }
+        }
+
+        this.control.layers = query;
+    },
+
+    getFeatureInfoHandler: function(e) {
         if (this._popup && this._popup.isVisible()) {
             this._popup.close();
         }
 
-        this._highlightLayer.destroyFeatures();
-
-        Ext.each(features, function(feature) {
-            // naive workaround to check for geometries returned
-            // in other projection that requested
-            // geoserver always returns EPSG:4326
-            var geom = feature.geometry;
-            if (geom &&
-                !geom.getBounds().intersectsBounds(extent)) {
-                feature.geometry = geom.transform('EPSG:4326', projection);
+        this._popup = Ext.create('GeoExt.window.Popup', {
+            title: 'Feature Info',
+            width: 600,
+            height: 300,
+            layout: 'fit',
+            map: e.object.map,
+            location: e.xy,
+            autoScroll: true,
+            items: {
+                xtype: 'gxc_component_iframe',
+                src: e.request._object.responseURL,
+                style: {
+                    background: 'white'
+                }
             }
-            featureItems.push({
-                xtype: 'propertygrid',
-                title: feature.fid,
-                source: feature.attributes
-            });
-        });
+        }).show();
 
-        this._highlightLayer.addFeatures(features);
-        console.log(this._highlightLayer);
-        this._highlightLayer.redraw();
-
-        if (featureItems.length > 0) {
-            this._popup = Ext.create('GeoExt.window.Popup', {
-                title: 'Feature Info',
-                width: 400,
-                height: 300,
-                layout: 'accordion',
-                map: e.object.map,
-                location: e.xy,
-                items: featureItems
-            }).show();
-        }
+        this.disable();
     }
 });
