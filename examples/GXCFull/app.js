@@ -60,8 +60,6 @@ var config = {
       }, {
         xtype: 'gxc_button_overviewmap'
       }, '-', {
-        xtype: 'gxc_button_featureinfo'
-      }, {
         xtype: 'gxc_button_selectfeature'
       }, '-', {
         xtype: 'gxc_button_measurepath'
