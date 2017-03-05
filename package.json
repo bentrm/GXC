@@ -33,7 +33,9 @@
             "remote": true
         },
         {
-            "path": "${package.dir}/resources/script/DynamicMeasure.js"
+            "path": "resources/script/DynamicMeasure.js",
+            "includeInBundle": true,
+            "remote": false
         }
     ],
     "css": [

@@ -14,7 +14,7 @@ Ext.syncRequire([
     'Deft.mixin.Controllable'
 ]);
 // Show long stack traces when in debug
-Q.longStackSupport = true;
+// Q.longStackSupport = true;
 //</debug>
 
 /**
@@ -23,7 +23,7 @@ Q.longStackSupport = true;
  */
 var config = {
   proxy: {
-    host: 'http://localhost:8080/Java/proxy.jsp?'
+    host: ''
   },
   geoserver: {
     host: 'http://localhost:8081/geoserver'
@@ -128,28 +128,159 @@ var config = {
     }
   },
   mapOptions: {
-    // Projection der angefragten Karte
-    projection: 'EPSG:4326',
+  // Projection der angefragten Karte
+  //projection: 'EPSG:3857',
+  //projection: 'EPSG:31469',
+  projection: 'EPSG:4326',
     // Projection der angezeigten Koordinaten
     // Eingeschränkter Kartenbereich für Navigation
     // initiale Position
-    center: [36.206, 34.003],
+    //center: [1528996, 6627663],
+  center: [13.17, 51.034],
+  //center: [5395240, 5646000],
     // Skalen für Berechnung der Zoomlevel (Slider, Dropdown)
     // Freie Eingabe ist über Benutzeroberfläche ebenfalls möglich
-    minScale: 10,
+    minScale: 1,
     maxScale: 150000000,
     // Anzahl der Zoomlevel im durch minScale/maxScale bzw. minResolution/maxResolution
     // vorgegebenen Bereich
     numZoomLevels: 20,
     // Initiales Zoomlevel
-    zoom: 11
+    zoom: 5
   },
   layers: [{
-    url: 'http://ows.terrestris.de/osm/service?',
-    type: 'WMS',
-    version: '1.1.1',
-    layer: 'OSM-WMS'
-  }],
+    type: "WMS",
+    title: "Blattschnitt Meilenblätter Sachsen",
+    version: "1.3.0",
+    url: "http://geoinformatik.htw-dresden.de/ms/mbl",
+    layer: 'Blattschnitt'
+  },
+    {
+      type: "WMS",
+      title: "Meilenblätter Sachsen",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/mbl",
+      layer: 'Meilenblatt_V'
+  }, {
+      type: "WMS",
+      title: "Temperatur in 1h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Temperatur_1',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Schneehöhe in 1h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Schneehoehe_1',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Niederschlag in 1h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Niederschlag_1',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Wind in 1h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Wind_1',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Temperatur in 12h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Temperatur_12',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Schneehöhe in 12h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Schneehoehe_12',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Niederschlag in 12h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Niederschlag_12',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Wind in 12h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Wind_12',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Schneehöhe in 24h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Schneehoehe_24',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Temperatur in 24h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Temperatur_24',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Niederschlag in 24h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Niederschlag_24',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Wind in 24h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Wind_24',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Temperatur in 36h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Temperatur_36',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Schneehöhe in 36h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Schneehoehe_36',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Niederschlag in 36h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Niederschlag_36',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Wind in 36h",
+      version: "1.3.0",
+      url: "http://geoinformatik.htw-dresden.de/ms/wetter",
+      layer: 'Wind_36',
+      visibility: false
+    }, {
+      type: "WMS",
+      title: "Open Street Map",
+      version: "1.3.0",
+      url: "http://ows.terrestris.de/osm/service",
+      layer: 'OSM-WMS'
+    }
+  ],
   services: [{
     type: 'WMS',
     title: 'OpenStreetMap',
