@@ -5,7 +5,6 @@ Ext.define('GXC.menu.Layer', {
     extend: 'Ext.menu.Menu',
     requires: [
         'Ext.data.ArrayStore',
-        'GXC.button.FeatureInfo',
         'GXC.menu.LayerViewController',
         'GeoExt.slider.LayerOpacity'
     ],

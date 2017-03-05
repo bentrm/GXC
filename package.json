@@ -18,18 +18,22 @@
     "js": [
         {
             "path": "//cdnjs.cloudflare.com/ajax/libs/q.js/1.2.0/q.min.js",
+            "includeInBundle": false,
             "remote": true
         },
         {
             "path": "//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js",
+            "includeInBundle": false,
             "remote": true
         },
         {
             "path": "//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-combined.min.js",
+            "includeInBundle": false,
             "remote": true
         },
         {
             "path": "//cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js",
+            "includeInBundle": false,
             "remote": true
         },
         {

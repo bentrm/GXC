@@ -13,6 +13,8 @@ Ext.define('GXC.Viewport', {
     requires: [
         'Ext.layout.container.Border',
         'Ext.tab.Panel',
+        'Deft.mixin.Injectable',
+        'Deft.mixin.Controllable',
         'GXC.component.*',
         'GXC.button.*',
         'GXC.form.*',
@@ -51,6 +53,7 @@ Ext.define('GXC.Viewport', {
     },
 
     initComponent: function() {
+      console.log(this);
         Ext.apply(this, {
             renderTo: this.appConfig.getContainer(),
             items: this.appConfig.get('viewportItems')
