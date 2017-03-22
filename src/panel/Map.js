@@ -13,6 +13,7 @@ Ext.define('GXC.panel.Map', {
     alias: 'widget.gxc_panel_map',
 
     inject: [
+        'appConfig',
         'mapService'
     ],
 
@@ -20,18 +21,21 @@ Ext.define('GXC.panel.Map', {
 
     cls: 'gxc-panel-map',
 
-    stateful: true,
     stateId: 'gxcMap',
 
     initComponent: function() {
         var map = this.mapService.getMap();
+        var appConfig = this.appConfig;
+        var stateful = appConfig.get('persistendState', false);
 
-        if (this.center) {
+        if (!(stateful && Ext.state.Manager.get('gxcMap')) && this.center) {
+            console.log(!(stateful && Ext.state.Manager.get('gxcMap')) && this.center);
             map.setCenter(this.center, this.zoom);
         }
 
         Ext.apply(this, {
             map: this.mapService.getMap(),
+            stateful: stateful,
             items: [{
                 xtype: 'gx_zoomslider',
                 aggressive: true,

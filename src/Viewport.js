@@ -53,7 +53,6 @@ Ext.define('GXC.Viewport', {
     },
 
     initComponent: function() {
-      console.log(this);
         Ext.apply(this, {
             renderTo: this.appConfig.getContainer(),
             items: this.appConfig.get('viewportItems')

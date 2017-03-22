@@ -4,9 +4,15 @@
  */
 Ext.define('GXC.data.LayerStore', {
     extend: 'GeoExt.data.LayerStore',
+
     requires: [
         'GXC.model.Layer'
     ],
+
+    inject: [
+      'appConfig'
+    ],
+
     model: 'GXC.model.Layer',
 
     listeners: {
@@ -16,7 +22,10 @@ Ext.define('GXC.data.LayerStore', {
          * @inheritDoc
          */
         add: function(store, records, index) {
-            Ext.state.Manager.set('gxc-sources', this.convertToSources());
+            var appConfig = this.appConfig;
+            if (appConfig.get('persistendState', false)) {
+                Ext.state.Manager.set('gxc-sources', this.convertToSources());
+            }
         },
 
         /**
@@ -25,7 +34,10 @@ Ext.define('GXC.data.LayerStore', {
          * @inheritDoc
          */
         remove: function(store, record, index) {
-            Ext.state.Manager.set('gxc-sources', this.convertToSources());
+          var appConfig = this.appConfig;
+          if (appConfig.get('persistendState', false)) {
+              Ext.state.Manager.set('gxc-sources', this.convertToSources());
+          }
         }
     },
 

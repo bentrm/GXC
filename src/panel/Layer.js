@@ -69,14 +69,13 @@ Ext.define('GXC.panel.Layer', {
             me.columns = [{
                 xtype    : 'gx_treecolumn',
                 text     : 'Name',
-                // width    : Ext.isIE6 ? null : 10000,
-                flex: 1,
+                flex: 4,
                 dataIndex: me.displayField
             }, {
                 itemId: 'actionColumn',
                 xtype:'actioncolumn',
                 dataIndex: 'layer',
-                width: 50,
+                flex: 1,
                 items: [{
                     iconCls: 'gxc-icon-info',
                     tooltip: 'Supports GetFeatureInfo',
