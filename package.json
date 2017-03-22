@@ -45,6 +45,7 @@
     "css": [
         {
             "path": "//cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/theme/default/style.css",
+            "includeInBundle": false,
             "remote": true
         }
     ],
